@@ -101,6 +101,28 @@ async def remember(ctx):
         gpt.remember(ctx.message.content[13:])
     await ctx.reply("Knowledge base updated")
     
+@client.command()
+async def dlquery(ctx):
+    async with ctx.typing():
+        reply = gpt.dlQuery(ctx.message.content[13:])
+    print(reply)
+    await ctx.reply(reply[1])
+    
+    
+@client.command()
+async def dlload(ctx):
+    async with ctx.typing():
+        try:
+            reply = gpt.dlRemember(ctx.message.content[12:])
+        except RateLimitError:
+            out = "Please wait before asking again"
+    print(reply)
+    out = reply[1]
+    await ctx.reply(out)
+
+@client.command()
+async def demo(ctx):
+    await ctx.reply(open("demo").read())
     
         
     
