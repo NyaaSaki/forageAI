@@ -1,5 +1,6 @@
 from pyDatalog import pyDatalog as pd
-
+import logging
+logging.basicConfig(level=logging.INFO)
 #       Data Descriptions 
 
 pd.create_terms('repairs','owns')
@@ -39,8 +40,13 @@ def inpData(query):
 def GetQuery(query):
     print(pd.ask(query).answers)
     return(pd.ask(query).answers)
+
+def getLog(query):
+    pd.pyEngine.Logging = True
+    print(pd.ask(query))
+    pd.pyEngine.Logging = False
     
     
 #inpData("owns('saki','fan')")
 
-#GetQuery("owns('saki',X)")
+getLog("owns('saki',X)")

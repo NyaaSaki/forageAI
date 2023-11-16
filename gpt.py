@@ -87,13 +87,23 @@ def dlQuery(content,model = "gpt-3.5-turbo"):
         ans = dl.GetQuery(query)
     except SyntaxError:
         ans = "There was an error : " + query
+        print(ans)
+        dllog.append(
+        {
+            "role": "user", "content" : " there was an error in the query " + query + " . ask me to rephrase the question to make this not happen"
+        })
     except AttributeError:
         ans = "no answers found for query: " + query
-        
-        
-    dllog.append(
+        print(ans)
+        dllog.append(
         {
-            "role": "user", "content" : "The reply to the query ' " + content + " ' was ' " + str(ans) + " '. Can you make this into a simple sentence reply? only give the sentence reply "
+            "role": "user", "content" : " try to answer this query ' " + content + " ' based on the datalog file and explain the reason for your reply in one sentence"
+        })
+        
+    else:
+        dllog.append(
+        {
+            "role": "user", "content" : "The reply to the query ' " + content + " ' was ' " + str(ans) + " '. Can you make this into a simple sentence reply? give only the reply sentence"
         })
     response = openai.ChatCompletion.create(
         model = model,

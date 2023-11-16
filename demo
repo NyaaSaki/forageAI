@@ -1,10 +1,21 @@
+Command Instructions
+dlquery - ask questions
+dlload - make assertions
+
+Basic Qustions
 Q1 - "who can repair a bulb" 
 Q2 - "what does bob own"
-Q3 - "who can repair something bob owns"
-Q4 - "which employee is locally available for kevin"
-Q5 - add a new person "XYZ owns a tv"
-Q6 - "does X own a tv"
-Q7 - 
-Q8 -
-Q9 -
-Q10 -
+Q3- "who lives in the north"
+
+DynamicTest:
+Q4 - "does X own a tv"
+Q5 - add X owns a TV , "does X own a tv"
+Q6 - "who are the people who own 2 or more items"
+
+Inferences
+Q7 - "who can repair something bob owns"
+Q8 - "which tv repairmen live near alice"
+
+Cross chat
+Q9 - "is there someone who can repair ac in the south?"
+Q10 - "what about in the north?"
